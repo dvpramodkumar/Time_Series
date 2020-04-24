@@ -1,0 +1,30 @@
+---
+title: "Time Series Forecasting"
+subtitle: "Chapter 3"
+author: "Pramod Duvvuri"
+date: "4/24/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library('pacman')
+p_load('fpp2')
+```
+
+```{r}
+## Average Method
+y <- ts(c(123, 39, 78, 52, 110), start = 2012)
+h <- 1
+meanf(y, h)
+```
+
+```{r echo=FALSE}
+## Usage of knitr for Rmd Tables
+p_load('knitr')
+kable(meanf(y,h))
+```
+
