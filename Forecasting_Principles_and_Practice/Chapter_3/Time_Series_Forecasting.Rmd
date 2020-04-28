@@ -8,6 +8,7 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.width=9, fig.height=5)
 ```
 
 ## Simple Forecasting Methods
@@ -107,3 +108,37 @@ autoplot(eggs) +
   autolayer(fc2, series="Bias adjusted", PI=FALSE) +
   guides(colour=guide_legend(title="Forecast"))
 ```
+
+## Residual Analysis
+
+```{r}
+autoplot(goog200) +
+  xlab("Day") + ylab("Closing Price (US$)") +
+  ggtitle("Google Stock (daily ending 6 December 2013)")
+```
+
+```{r}
+res <- residuals(naive(goog200))
+autoplot(res) + xlab("Day") + ylab("") +
+  ggtitle("Residuals from naïve method")
+```
+
+```{r}
+gghistogram(res) + ggtitle("Histogram of residuals")
+```
+
+```{r}
+ggAcf(res) + ggtitle("ACF of residuals")
+```
+
+### Portmanteau Tests for Autocorrelation
+
+```{r}
+Box.test(res, lag=10, fitdf=0)
+Box.test(res,lag=10, fitdf=0, type="Lj")
+```
+
+```{r}
+checkresiduals(naive(goog200))
+```
+
