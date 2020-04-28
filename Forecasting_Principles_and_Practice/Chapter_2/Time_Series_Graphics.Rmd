@@ -8,18 +8,19 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.width = 9, fig.height = 5)
 ```
 
 ```{r}
 ## Load all required packages
-library('pacman')
-p_load('forecast','fpp2','GGally') # Equivalentt of library('package-name')
+library("pacman")
+p_load("forecast", "fpp2", "GGally") # Equivalent of library("package-name")
 ```
 
 
 ```{r}
 ## Using autoplot for plotting a time-series data
-autoplot(melsyd[,"Economy.Class"]) +
+autoplot(melsyd[, "Economy.Class"]) +
   ggtitle("Economy class passengers: Melbourne-Sydney") +
   xlab("Year") +
   ylab("Thousands")
@@ -35,14 +36,14 @@ autoplot(a10) +
 
 ```{r}
 ## Seasonal Plot
-ggseasonplot(a10, year.labels=TRUE, year.labels.left=TRUE) +
+ggseasonplot(a10, year.labels = TRUE, year.labels.left = TRUE) +
   ylab("$ million") +
   ggtitle("Seasonal Plot: Antidiabetic Drug Sales")
 ```
 
 ```{r}
 ## Polar Seasonal Plot
-ggseasonplot(a10, polar=TRUE) +
+ggseasonplot(a10, polar = TRUE) +
   ylab("$ million") +
   ggtitle("Polar Seasonal Plot: Antidiabetic Drug Sales")
 ```
@@ -55,28 +56,28 @@ ggsubseriesplot(a10) +
 
 ```{r}
 ## Scatterplots
-autoplot(elecdemand[,c("Demand","Temperature")], facets=TRUE) +
+autoplot(elecdemand[, c("Demand", "Temperature")], facets = TRUE) +
   xlab("Year: 2014") + ylab("") +
   ggtitle("Half-hourly electricity demand: Victoria, Australia")
 ```
 
 
 ```{r}
-qplot(Temperature, Demand, data=as.data.frame(elecdemand)) +
+qplot(Temperature, Demand, data = as.data.frame(elecdemand)) +
   ylab("Demand (GW)") + xlab("Temperature (Celsius)")
 ```
 
 ```{r}
-autoplot(visnights[,1:5], facets=TRUE) +
+autoplot(visnights[, 1:5], facets = TRUE) +
   ylab("Number of visitor nights each quarter (millions)")
 ```
 
 ```{r message=FALSE, warning=FALSE}
-GGally::ggpairs(as.data.frame(visnights[,1:5]))
+GGally::ggpairs(as.data.frame(visnights[, 1:5]))
 ```
 
 ```{r}
-beer2 <- window(ausbeer, start=1992)
+beer2 <- window(ausbeer, start = 1992)
 
 ## Lag Plots
 gglagplot(beer2)
@@ -84,17 +85,17 @@ gglagplot(beer2)
 
 ```{r}
 ## ACF Plot
-ggAcf(beer2) + 
-  ggtitle('ACF Plot: Correlogram')
+ggAcf(beer2) +
+  ggtitle("ACF Plot: Correlogram")
 ```
 
 ```{r}
-aelec <- window(elec, start=1980)
+aelec <- window(elec, start = 1980)
 autoplot(aelec) + xlab("Year") + ylab("GWh")
 ```
 
 ```{r}
-ggAcf(aelec, lag=48)
+ggAcf(aelec, lag = 48)
 ```
 
 ```{r}
@@ -107,7 +108,6 @@ autoplot(y) +
 
 ```{r}
 ## ACF Plot for White Noise
-ggAcf(y) + 
-  ggtitle('ACF Plot for White Noise')
+ggAcf(y) +
+  ggtitle("ACF Plot for White Noise")
 ```
-
