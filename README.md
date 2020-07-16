@@ -1,12 +1,12 @@
-## Time Series Analysis and Forecasting
+## Time Series Analysis and Forecasting for Beginners
 
 This repo contains code for *Time Series Analysis and Forecasting*, code from book mentioned below can be found in the directory. Please install the package below before you can run the code under the directory
 
 ```
-# Setup to run the R Code
+# Setup to run the R Code in RStudio
 install.library("pacman") # Package Manager in R
 library("pacman")
-p_load("fpp2") # R Package for the book Forecasting: Principles and Practice
+p_load("fpp2") # R Package for the Book Forecasting: Principles and Practice
 ```
 
 ### Books on Time Series Analysis and Forecasting
